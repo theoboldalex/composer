@@ -24,4 +24,13 @@ class RemoveCommandTest extends TestCase
         $appTester = $this->getApplicationTester();
         $appTester->run(['command' => 'remove']);
     }
+
+    public function testExceptionThrownWhereNoLockFileIsFoundAndUnusedCommandPassed(): void
+    {
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage('A valid composer.lock file is required to run this command with --unused');
+        $this->initTempComposer([]);
+        $appTester = $this->getApplicationTester();
+        $appTester->run(['command' => 'remove', '--unused' => true]);
+    }
 }
