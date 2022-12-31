@@ -14,6 +14,7 @@ namespace Composer\Test\Command;
 
 use Composer\Test\TestCase;
 use Symfony\Component\Console\Exception\InvalidArgumentException;
+use UnexpectedValueException;
 
 class RemoveCommandTest extends TestCase
 {
